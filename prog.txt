@@ -1,2 +1,1 @@
-10 + 20 * 5
-print("Enzo Pinheiro de Oliveira")
+2*4+1

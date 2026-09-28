@@ -18,8 +18,9 @@ class NoOperacao(No):
         self.fdir = fdir
 
     def avalia(self):
-        valor_esq = self.fesq.avalia()
-        valor_dir = self.fdir.avalia()
+        valor_esq = self.fesq.avalia() if self.fesq else None
+        # Protegendo fdir para o caso do print, que não tem filho direito
+        valor_dir = self.fdir.avalia() if self.fdir else None
         match self.tipo:
             case "+":
                 return valor_esq + valor_dir

@@ -140,7 +140,8 @@ def p_error(produção):
 parser = yacc.yacc(start="expr")
 
 try:
-    with open("prog.txt", "r", encoding="utf-8") as f:
+    # Use 'utf-8-sig' para ignorar o caractere invisível de BOM do arquivo
+    with open("prog.txt", "r", encoding="utf-8-sig") as f:
         entrada = f.read()
 
     if entrada.strip():
