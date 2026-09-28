@@ -1,0 +1,385 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expr
+Rule 1     expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA
+Rule 2     expr -> expr MAIS termo
+Rule 3     expr -> expr MENOS termo
+Rule 4     expr -> expr DIVISAO termo
+Rule 5     expr -> expr MULTIPLICACAO termo
+Rule 6     expr -> expr DIVISAO_INTEIRA termo
+Rule 7     expr -> termo
+Rule 8     termo -> FLOAT
+Rule 9     termo -> INT
+Rule 10    termo -> STRING
+Rule 11    termo -> PARENTESE_ABRE expr PARENTESE_FECHA
+
+Terminals, with rules where they appear
+
+DIVISAO              : 4
+DIVISAO_INTEIRA      : 6
+FLOAT                : 8
+INT                  : 9
+MAIS                 : 2
+MENOS                : 3
+MULTIPLICACAO        : 5
+PARENTESE_ABRE       : 1 11
+PARENTESE_FECHA      : 1 11
+PRINT                : 1
+STRING               : 10
+error                : 
+
+Nonterminals, with rules where they appear
+
+expr                 : 1 2 3 4 5 6 11 0
+termo                : 2 3 4 5 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expr
+    (1) expr -> . PRINT PARENTESE_ABRE expr PARENTESE_FECHA
+    (2) expr -> . expr MAIS termo
+    (3) expr -> . expr MENOS termo
+    (4) expr -> . expr DIVISAO termo
+    (5) expr -> . expr MULTIPLICACAO termo
+    (6) expr -> . expr DIVISAO_INTEIRA termo
+    (7) expr -> . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    PRINT           shift and go to state 2
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    expr                           shift and go to state 1
+    termo                          shift and go to state 4
+
+state 1
+
+    (0) S' -> expr .
+    (2) expr -> expr . MAIS termo
+    (3) expr -> expr . MENOS termo
+    (4) expr -> expr . DIVISAO termo
+    (5) expr -> expr . MULTIPLICACAO termo
+    (6) expr -> expr . DIVISAO_INTEIRA termo
+
+    MAIS            shift and go to state 8
+    MENOS           shift and go to state 9
+    DIVISAO         shift and go to state 10
+    MULTIPLICACAO   shift and go to state 11
+    DIVISAO_INTEIRA shift and go to state 12
+
+
+state 2
+
+    (1) expr -> PRINT . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    PARENTESE_ABRE  shift and go to state 13
+
+
+state 3
+
+    (11) termo -> PARENTESE_ABRE . expr PARENTESE_FECHA
+    (1) expr -> . PRINT PARENTESE_ABRE expr PARENTESE_FECHA
+    (2) expr -> . expr MAIS termo
+    (3) expr -> . expr MENOS termo
+    (4) expr -> . expr DIVISAO termo
+    (5) expr -> . expr MULTIPLICACAO termo
+    (6) expr -> . expr DIVISAO_INTEIRA termo
+    (7) expr -> . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    PRINT           shift and go to state 2
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    expr                           shift and go to state 14
+    termo                          shift and go to state 4
+
+state 4
+
+    (7) expr -> termo .
+
+    MAIS            reduce using rule 7 (expr -> termo .)
+    MENOS           reduce using rule 7 (expr -> termo .)
+    DIVISAO         reduce using rule 7 (expr -> termo .)
+    MULTIPLICACAO   reduce using rule 7 (expr -> termo .)
+    DIVISAO_INTEIRA reduce using rule 7 (expr -> termo .)
+    $end            reduce using rule 7 (expr -> termo .)
+    PARENTESE_FECHA reduce using rule 7 (expr -> termo .)
+
+
+state 5
+
+    (8) termo -> FLOAT .
+
+    MAIS            reduce using rule 8 (termo -> FLOAT .)
+    MENOS           reduce using rule 8 (termo -> FLOAT .)
+    DIVISAO         reduce using rule 8 (termo -> FLOAT .)
+    MULTIPLICACAO   reduce using rule 8 (termo -> FLOAT .)
+    DIVISAO_INTEIRA reduce using rule 8 (termo -> FLOAT .)
+    $end            reduce using rule 8 (termo -> FLOAT .)
+    PARENTESE_FECHA reduce using rule 8 (termo -> FLOAT .)
+
+
+state 6
+
+    (9) termo -> INT .
+
+    MAIS            reduce using rule 9 (termo -> INT .)
+    MENOS           reduce using rule 9 (termo -> INT .)
+    DIVISAO         reduce using rule 9 (termo -> INT .)
+    MULTIPLICACAO   reduce using rule 9 (termo -> INT .)
+    DIVISAO_INTEIRA reduce using rule 9 (termo -> INT .)
+    $end            reduce using rule 9 (termo -> INT .)
+    PARENTESE_FECHA reduce using rule 9 (termo -> INT .)
+
+
+state 7
+
+    (10) termo -> STRING .
+
+    MAIS            reduce using rule 10 (termo -> STRING .)
+    MENOS           reduce using rule 10 (termo -> STRING .)
+    DIVISAO         reduce using rule 10 (termo -> STRING .)
+    MULTIPLICACAO   reduce using rule 10 (termo -> STRING .)
+    DIVISAO_INTEIRA reduce using rule 10 (termo -> STRING .)
+    $end            reduce using rule 10 (termo -> STRING .)
+    PARENTESE_FECHA reduce using rule 10 (termo -> STRING .)
+
+
+state 8
+
+    (2) expr -> expr MAIS . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    termo                          shift and go to state 15
+
+state 9
+
+    (3) expr -> expr MENOS . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    termo                          shift and go to state 16
+
+state 10
+
+    (4) expr -> expr DIVISAO . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    termo                          shift and go to state 17
+
+state 11
+
+    (5) expr -> expr MULTIPLICACAO . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    termo                          shift and go to state 18
+
+state 12
+
+    (6) expr -> expr DIVISAO_INTEIRA . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    termo                          shift and go to state 19
+
+state 13
+
+    (1) expr -> PRINT PARENTESE_ABRE . expr PARENTESE_FECHA
+    (1) expr -> . PRINT PARENTESE_ABRE expr PARENTESE_FECHA
+    (2) expr -> . expr MAIS termo
+    (3) expr -> . expr MENOS termo
+    (4) expr -> . expr DIVISAO termo
+    (5) expr -> . expr MULTIPLICACAO termo
+    (6) expr -> . expr DIVISAO_INTEIRA termo
+    (7) expr -> . termo
+    (8) termo -> . FLOAT
+    (9) termo -> . INT
+    (10) termo -> . STRING
+    (11) termo -> . PARENTESE_ABRE expr PARENTESE_FECHA
+
+    PRINT           shift and go to state 2
+    FLOAT           shift and go to state 5
+    INT             shift and go to state 6
+    STRING          shift and go to state 7
+    PARENTESE_ABRE  shift and go to state 3
+
+    expr                           shift and go to state 20
+    termo                          shift and go to state 4
+
+state 14
+
+    (11) termo -> PARENTESE_ABRE expr . PARENTESE_FECHA
+    (2) expr -> expr . MAIS termo
+    (3) expr -> expr . MENOS termo
+    (4) expr -> expr . DIVISAO termo
+    (5) expr -> expr . MULTIPLICACAO termo
+    (6) expr -> expr . DIVISAO_INTEIRA termo
+
+    PARENTESE_FECHA shift and go to state 21
+    MAIS            shift and go to state 8
+    MENOS           shift and go to state 9
+    DIVISAO         shift and go to state 10
+    MULTIPLICACAO   shift and go to state 11
+    DIVISAO_INTEIRA shift and go to state 12
+
+
+state 15
+
+    (2) expr -> expr MAIS termo .
+
+    MAIS            reduce using rule 2 (expr -> expr MAIS termo .)
+    MENOS           reduce using rule 2 (expr -> expr MAIS termo .)
+    DIVISAO         reduce using rule 2 (expr -> expr MAIS termo .)
+    MULTIPLICACAO   reduce using rule 2 (expr -> expr MAIS termo .)
+    DIVISAO_INTEIRA reduce using rule 2 (expr -> expr MAIS termo .)
+    $end            reduce using rule 2 (expr -> expr MAIS termo .)
+    PARENTESE_FECHA reduce using rule 2 (expr -> expr MAIS termo .)
+
+
+state 16
+
+    (3) expr -> expr MENOS termo .
+
+    MAIS            reduce using rule 3 (expr -> expr MENOS termo .)
+    MENOS           reduce using rule 3 (expr -> expr MENOS termo .)
+    DIVISAO         reduce using rule 3 (expr -> expr MENOS termo .)
+    MULTIPLICACAO   reduce using rule 3 (expr -> expr MENOS termo .)
+    DIVISAO_INTEIRA reduce using rule 3 (expr -> expr MENOS termo .)
+    $end            reduce using rule 3 (expr -> expr MENOS termo .)
+    PARENTESE_FECHA reduce using rule 3 (expr -> expr MENOS termo .)
+
+
+state 17
+
+    (4) expr -> expr DIVISAO termo .
+
+    MAIS            reduce using rule 4 (expr -> expr DIVISAO termo .)
+    MENOS           reduce using rule 4 (expr -> expr DIVISAO termo .)
+    DIVISAO         reduce using rule 4 (expr -> expr DIVISAO termo .)
+    MULTIPLICACAO   reduce using rule 4 (expr -> expr DIVISAO termo .)
+    DIVISAO_INTEIRA reduce using rule 4 (expr -> expr DIVISAO termo .)
+    $end            reduce using rule 4 (expr -> expr DIVISAO termo .)
+    PARENTESE_FECHA reduce using rule 4 (expr -> expr DIVISAO termo .)
+
+
+state 18
+
+    (5) expr -> expr MULTIPLICACAO termo .
+
+    MAIS            reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    MENOS           reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    DIVISAO         reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    MULTIPLICACAO   reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    DIVISAO_INTEIRA reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    $end            reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+    PARENTESE_FECHA reduce using rule 5 (expr -> expr MULTIPLICACAO termo .)
+
+
+state 19
+
+    (6) expr -> expr DIVISAO_INTEIRA termo .
+
+    MAIS            reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    MENOS           reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    DIVISAO         reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    MULTIPLICACAO   reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    DIVISAO_INTEIRA reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    $end            reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+    PARENTESE_FECHA reduce using rule 6 (expr -> expr DIVISAO_INTEIRA termo .)
+
+
+state 20
+
+    (1) expr -> PRINT PARENTESE_ABRE expr . PARENTESE_FECHA
+    (2) expr -> expr . MAIS termo
+    (3) expr -> expr . MENOS termo
+    (4) expr -> expr . DIVISAO termo
+    (5) expr -> expr . MULTIPLICACAO termo
+    (6) expr -> expr . DIVISAO_INTEIRA termo
+
+    PARENTESE_FECHA shift and go to state 22
+    MAIS            shift and go to state 8
+    MENOS           shift and go to state 9
+    DIVISAO         shift and go to state 10
+    MULTIPLICACAO   shift and go to state 11
+    DIVISAO_INTEIRA shift and go to state 12
+
+
+state 21
+
+    (11) termo -> PARENTESE_ABRE expr PARENTESE_FECHA .
+
+    MAIS            reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    MENOS           reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    DIVISAO         reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    MULTIPLICACAO   reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    DIVISAO_INTEIRA reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    $end            reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+    PARENTESE_FECHA reduce using rule 11 (termo -> PARENTESE_ABRE expr PARENTESE_FECHA .)
+
+
+state 22
+
+    (1) expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .
+
+    MAIS            reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    MENOS           reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    DIVISAO         reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    MULTIPLICACAO   reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    DIVISAO_INTEIRA reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    $end            reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+    PARENTESE_FECHA reduce using rule 1 (expr -> PRINT PARENTESE_ABRE expr PARENTESE_FECHA .)
+
